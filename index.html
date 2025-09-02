@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Interactiva - Formatos Digitales</title>
+    <style>
+        :root {
+            --main-color: #3498db;
+            --accent-color: #e74c3c;
+            --activity-color: #f1c40f;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            padding: 30px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: var(--dark-color);
+        }
+        h1 {
+            color: var(--main-color);
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+        h2 {
+            border-bottom: 2px solid var(--main-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .activity-instructions {
+            background-color: #e8f4fc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--main-color);
+        }
+        .situation {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--activity-color);
+        }
+        .situation h3 {
+            color: var(--activity-color);
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .options-list {
+            background-color: #f9f9f9;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 3px solid var(--main-color);
+        }
+        .reflection {
+            background-color: #fff8e1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            border-left: 4px solid #ffc107;
+        }
+        .answer-space {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border: 1px dashed #ccc;
+        }
+        .group-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .group-item {
+            background-color: var(--light-color);
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            flex-grow: 1;
+            margin-right: 10px;
+            min-width: 200px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1em;
+        }
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 15px;
+        }
+        button {
+            background-color: var(--main-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        button.save {
+            background-color: #2ecc71;
+        }
+        button.save:hover {
+            background-color: #27ae60;
+        }
+        button.print {
+            background-color: #9b59b6;
+        }
+        button.print:hover {
+            background-color: #8e44ad;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            .group-info {
+                flex-direction: column;
+            }
+            .group-item {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            .btn-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Actividad Interactiva: Elige el Formato Correcto</h1>
+        
+        <div class="group-info">
+            <div class="group-item">
+                <strong>Curso:</strong> 
+                <input type="text" id="curso" placeholder="Ej: 2° año TIC">
+            </div>
+            <div class="group-item">
+                <strong>Integrantes:</strong>
+                <input type="text" id="integrantes" placeholder="Nombres de los miembros del grupo">
+            </div>
+            <div class="group-item">
+                <strong>Fecha:</strong>
+                <input type="text" id="fecha" placeholder="Ej: 15/05/2023">
+            </div>
+        </div>
+
+        <div class="activity-instructions">
+            <h2>📝 Instrucciones:</h2>
+            <p>En <strong>grupos de 3 o 4 personas</strong>, analicen las siguientes situaciones y decidan:</p>
+            <ol>
+                <li>¿Qué formato elegirían para cada caso?</li>
+                <li>¿Por qué consideran que es el más adecuado?</li>
+            </ol>
+            <p>Escriban sus respuestas directamente en los campos a continuación.</p>
+        </div>
+
+        <div class="situation">
+            <h3>Situación 1: Crear un meme</h3>
+            <p>Quieres crear un meme para compartir en redes sociales que combine una imagen divertida y texto.</p>
+            <div class="options-list">
+                <strong>Formatos a considerar:</strong> JPG, PNG, GIF
+            </div>
+            <div class="answer-space">
+                <p><strong>Formato elegido:</strong></p>
+                <input type="text" id="s1-formato" placeholder="Escribe el formato que elegirían">
+                <p><strong>Razón:</strong></p>
+                <textarea id="s1-razon" placeholder="Explica por qué eligieron ese formato"></textarea>
+            </div>
+        </div>
+
+        <div class="situation">
+            <h3>Situación 2: Hacer un sticker</h3>
+            <p>Necesitas hacer un sticker con fondo transparente para usar en WhatsApp.</p>
+            <div class="options-list">
+                <strong>Formatos a considerar:</strong> PNG, JPG, GIF
+            </div>
+            <div class="answer-space">
+                <p><strong>Formato elegido:</strong></p>
+                <input type="text" id="s2-formato" placeholder="Escribe el formato que elegirían">
+                <p><strong>Razón:</strong></p>
+                <textarea id="s2-razon" placeholder="Explica por qué eligieron ese formato"></textarea>
+            </div>
+        </div>
+
+        <div class="situation">
+            <h3>Situación 3: Compartir un "print" de pantalla</h3>
+            <p>Debes compartir una captura de pantalla de Windows que muestra un error del sistema.</p>
+            <div class="options-list">
+                <strong>Formatos a considerar:</strong> PNG, JPG, PDF
+            </div>
+            <div class="answer-space">
+                <p><strong>Formato elegido:</strong></p>
+                <input type="text" id="s3-formato" placeholder="Escribe el formato que elegirían">
+                <p><strong>Razón:</strong></p>
+                <textarea id="s3-razon" placeholder="Explica por qué eligieron ese formato"></textarea>
+            </div>
+        </div>
+
+        <div class="situation">
+            <h3>Situación 4: Enviar un documento con tablas</h3>
+            <p>Necesitas enviar un documento que contiene tablas con datos numéricos y gráficos que deben poder editarse.</p>
+            <div class="options-list">
+                <strong>Formatos a considerar:</strong> PDF, DOCX, XLSX, TXT
+            </div>
+            <div class="answer-space">
+                <p><strong>Formato elegido:</strong></p>
+                <input type="text" id="s4-formato" placeholder="Escribe el formato que elegirían">
+                <p><strong>Razón:</strong></p>
+                <textarea id="s4-razon" placeholder="Explica por qué eligieron ese formato"></textarea>
+            </div>
+        </div>
+
+        <div class="situation">
+            <h3>Situación 5: Grabar audio de alta calidad</h3>
+            <p>Debes grabar un audio de alta calidad para un proyecto musical escolar.</p>
+            <div class="options-list">
+                <strong>Formatos a considerar:</strong> MP3, WAV, M4A
+            </div>
+            <div class="answer-space">
+                <p><strong>Formato elegido:</strong></p>
+                <input type="text" id="s5-formato" placeholder="Escribe el formato que elegirían">
+                <p><strong>Razón:</strong></p>
+                <textarea id="s5-razon" placeholder="Explica por qué eligieron ese formato"></textarea>
+            </div>
+        </div>
+
+        <div class="reflection">
+            <h3>💭 Para reflexionar en grupo:</h3>
+            <p>¿Por qué creen que es importante elegir el formato correcto según el uso que le daremos a un archivo? Mencionen al menos dos razones.</p>
+            <div class="answer-space">
+                <p><strong>Razón 1:</strong></p>
+                <textarea id="reflexion1" placeholder="Escribe la primera razón"></textarea>
+                <p><strong>Razón 2:</strong></p>
+                <textarea id="reflexion2" placeholder="Escribe la segunda razón"></textarea>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button class="save" onclick="guardarRespuestas()">Guardar Respuestas</button>
+            <button class="print" onclick="window.print()">Imprimir Actividad</button>
+        </div>
+    </div>
+
+    <script>
+        // Cargar respuestas guardadas si existen
+        function cargarRespuestasGuardadas() {
+            for (let i = 1; i <= 5; i++) {
+                const formato = localStorage.getItem(`s${i}-formato`);
+                const razon = localStorage.getItem(`s${i}-razon`);
+                
+                if (formato) document.getElementById(`s${i}-formato`).value = formato;
+                if (razon) document.getElementById(`s${i}-razon`).value = razon;
+            }
+            
+            // Cargar datos del grupo
+            const curso = localStorage.getItem('curso');
+            const integrantes = localStorage.getItem('integrantes');
+            const fecha = localStorage.getItem('fecha');
+            const reflexion1 = localStorage.getItem('reflexion1');
+            const reflexion2 = localStorage.getItem('reflexion2');
+            
+            if (curso) document.getElementById('curso').value = curso;
+            if (integrantes) document.getElementById('integrantes').value = integrantes;
+            if (fecha) document.getElementById('fecha').value = fecha;
+            if (reflexion1) document.getElementById('reflexion1').value = reflexion1;
+            if (reflexion2) document.getElementById('reflexion2').value = reflexion2;
+        }
+        
+        // Guardar todas las respuestas
+        function guardarRespuestas() {
+            for (let i = 1; i <= 5; i++) {
+                const formato = document.getElementById(`s${i}-formato`).value;
+                const razon = document.getElementById(`s${i}-razon`).value;
+                
+                localStorage.setItem(`s${i}-formato`, formato);
+                localStorage.setItem(`s${i}-razon`, razon);
+            }
+            
+            // Guardar datos del grupo
+            localStorage.setItem('curso', document.getElementById('curso').value);
+            localStorage.setItem('integrantes', document.getElementById('integrantes').value);
+            localStorage.setItem('fecha', document.getElementById('fecha').value);
+            localStorage.setItem('reflexion1', document.getElementById('reflexion1').value);
+            localStorage.setItem('reflexion2', document.getElementById('reflexion2').value);
+            
+            alert('¡Respuestas guardadas! Podrás continuar later.');
+        }
+        
+        // Cargar respuestas al iniciar la página
+        window.onload = cargarRespuestasGuardadas;
+    </script>
+</body>
+</html>
